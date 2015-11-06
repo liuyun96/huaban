@@ -1,0 +1,32 @@
+/*****
+ * 通用样式
+ */
+
+.my-icon{
+	width: 35px;
+	height: 35px;;
+}
+
+/***
+ * 详情页面
+ */
+
+.img_addtocart{
+	height: 75%;
+}
+
+.my-icon-blackcart{
+	background-image: url(../res/blackcart.png);
+	background-size: 100% 100%;
+	height: 35px !important;
+	width: 35px !important;
+}
+.my-icon-heart{
+	background-image: url(../res/heartbutton.png);
+	background-size: 100% 100%;
+}
+
+.my-icon-share{
+	background-image: url(../res/sharebutton.png);
+	background-size: 100% 100%;
+}
