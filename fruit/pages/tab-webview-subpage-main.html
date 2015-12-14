@@ -25,7 +25,7 @@
 	<body>
 		<ul class="mui-table-view mui-grid-view mui-grid-9" id="main_ul">
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<a href="item_list.html">
+				<a href="#">
 					<span class="mui-icon mui-icon-home"></span>
 					<div class="mui-media-body">Home</div>
 				</a>
@@ -123,7 +123,14 @@
 					contentrefresh: '正在加载...',
 					callback: pullupRefresh
 				}
-			}
+			},
+			preloadPages: [{
+				"id": "item_list.html",
+				"url": "/item_list.html",
+				"styles": {
+					"popGesture": "hide"
+				}
+			}]
 		});
 		/**
 		 * 下拉刷新具体业务实现
@@ -175,15 +182,15 @@
 		});
 		var aniShow = "pop-in";
 		mui('#main_ul').on('tap', 'a', function() {
-			var id = this.getAttribute('href');
-			var href = this.href;
+			//var id = this.getAttribute('href');
+			//var href = this.href;
 			var webview_style = {
 				popGesture: "close"
 			};
 			//侧滑菜单需动态控制一下zindex值；
 			mui.openWindow({
-				id: id,
-				url: this.href,
+				id: "item_list",
+				url: "item_list.html",
 				styles: webview_style,
 				show: {
 					aniShow: aniShow
@@ -259,8 +266,8 @@
 				};
 				//侧滑菜单需动态控制一下zindex值；
 				//if (~id.indexOf('offcanvas-')) {
-					webview_style.zindex = 9998;
-					webview_style.popGesture = ~id.indexOf('offcanvas-with-right') ? "close" : "none";
+				webview_style.zindex = 9998;
+				webview_style.popGesture = ~id.indexOf('offcanvas-with-right') ? "close" : "none";
 				//}
 				mui.openWindow({
 					id: id,
@@ -275,7 +282,6 @@
 				});
 			}
 		});
-		
 	</script>
 
 </html>
