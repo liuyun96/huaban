@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background" >
+
+    <RelativeLayout
+        android:id="@id/titlebar"
+        style="@style/RelativeLayout"
+        android:background="@drawable/head_bg" >
+
+        <ImageView
+            android:id="@+id/back_my"
+            style="@style/head_img"
+            android:onClick="backMy" />
+
+        <TextView
+            android:id="@+id/head_text"
+            style="@style/head_text"
+            android:text="我的评论" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titlebar"
+        android:orientation="vertical" >
+        
+    </LinearLayout>
+
+</RelativeLayout>

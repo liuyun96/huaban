@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="@color/background" >
+
+    <RelativeLayout
+        android:id="@id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/head_bg" >
+
+        <TextView
+            android:id="@+id/head_text"
+            style="@style/head_text"
+            android:text="@string/my" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/toolbar"
+        android:layout_below="@id/titlebar"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_girl" />
+
+            <TextView
+                android:id="@+id/myname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="好妈咪001"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/myname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="宝贝性别："
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/myname"
+                        style="@style/text_Right"
+                        android:paddingLeft="5dp"
+                        android:text="女"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:layout_width="55dp"
+                        android:layout_height="35dp"
+                        android:text="修改" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/mydate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="宝贝生日："
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/text_left"
+                        android:layout_span="2"
+                        android:text="2012-06-01" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_fav" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的收藏" />
+
+            <TextView
+                android:id="@+id/fav_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_ping" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的评论" />
+
+            <TextView
+                android:id="@+id/ping_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_send" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的转发" />
+
+            <TextView
+                android:id="@+id/send_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_thumd" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的点赞" />
+
+            <TextView
+                android:id="@+id/like_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_che" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的订单" />
+
+            <TextView
+                android:id="@+id/order_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_address" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="我的地址" />
+
+            <TextView
+                android:id="@+id/address_count"
+                style="@style/my_num" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_tel" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="联系北妈" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_suggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_sug" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="意见反馈" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_update" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="软件更新" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+
+        <RelativeLayout
+            android:id="@+id/my_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="clickRow" >
+
+            <ImageView
+                style="@style/my_img"
+                android:src="@drawable/my_wen" />
+
+            <TextView
+                style="@style/my_name"
+                android:text="软件介绍" />
+
+            <ImageView style="@style/my_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/single_pix"
+            android:background="@color/line" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="lv" type="id"></item>
+    <item name="search_list" type="id"></item>
+    <item name="titlebar" type="id">false</item>
+    <item name="head_bar" type="id">false</item>
+    <item name="toolbar" type="id">false</item>
+    <item name="index_menu_1" type="id">false</item>
+    <item name="index_menu_2" type="id">false</item>
+    <item name="index_menu_3" type="id">false</item>
+    <item name="index_menu_4" type="id">false</item>
+    <item name="index_btn_1" type="id">false</item>
+    <item name="index_btn_2" type="id">false</item>
+    <item name="index_btn_3" type="id">false</item>
+    <item name="index_btn_4" type="id">false</item>
+    <item name="index_btn_5" type="id">false</item>
+    <item name="index_btn_6" type="id">false</item>
+    <item name="index_btn_7" type="id">false</item>
+    <item name="index_btn_8" type="id">false</item>
+    <item name="tuan_back" type="id">false</item>
+    <item name="my_fav" type="id">false</item>
+
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.own.yuer"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:name="com.own.yuer.AppContext"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+
+        <!-- 单元测试用的 -->
+        <uses-library android:name="android.test.runner" />
+
+        <!-- 第一个加载的ui -->
+        <activity
+            android:name="com.own.yuer.ui.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.own.yuer.ui.ViewFlipperActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.LoginActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.IndexActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.SearchActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.TuanActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.MyActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.MyChild"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.ArticleListActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.SubjectActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.MainActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.SearchDetailActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.own.yuer.ui.ArticleActivity"
+            android:configChanges="keyboardHidden|navigation|orientation"
+            android:screenOrientation="portrait" />
+    </application>
+
+    <!-- 访问网络的权限 -->
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 屏幕保持唤醒 不锁屏 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 获取机型信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 单元测试用的 -->
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="test for my app"
+        android:targetPackage="com.own.yuer" />
+
+</manifest>
