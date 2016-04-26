@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dip"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="0dip" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dip"
+        android:padding="0dip"
+        android:src="@drawable/login_head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:background="@color/white"
+        android:layout_marginTop="30dp"
+        android:clickable="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20.0dip"
+            android:gravity="center"
+            android:text="@string/account"
+            android:textColor="@color/main_tv_color"
+            android:textSize="@dimen/title_size_16" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/edittext_shape"
+            android:drawableLeft="@drawable/login_user"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_account"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            android:text="test"
+            android:textColor="@color/main_tv_color"
+            android:textColorHint="@color/main_tv_hint"
+            android:textSize="@dimen/title_size_16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:background="@color/white"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20.0dip"
+            android:gravity="center"
+            android:text="@string/pwd"
+            android:textColor="@color/main_tv_color"
+            android:textSize="@dimen/title_size_16" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/edittext_shape"
+            android:drawableLeft="@drawable/login_lock"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_pwd"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:text="666666"
+            android:textColor="@color/main_tv_color"
+            android:textColorHint="@color/main_tv_hint"
+            android:textSize="@dimen/title_size_16" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="#48b4ff"
+        android:gravity="center"
+        android:height="50dp"
+        android:text="立即登录"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
