@@ -35,7 +35,7 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 		String url = UrlContant.URL_INDEX
 				+ UrlContant.getUri(sp.getString(UrlContant.SP_token, "NONE"));
-		url = "https://m.baidu.com/";
+		// url = "https://m.baidu.com/";
 		HelloWebViewClient.addUrl(url);
 		initView(url);
 	}
@@ -67,7 +67,7 @@ public class HomeActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)
-				&& !HelloWebViewClient.CURRENT_URL.contains("m.baidu.com")) {
+				&& !HelloWebViewClient.CURRENT_URL.contains("index.html")) {
 			if (HelloWebViewClient.getPreUrl() != null) {
 				HelloWebViewClient.CURRENT_URL = HelloWebViewClient.getPreUrl();
 				requestedOrientation(HelloWebViewClient.getPreUrl());
@@ -75,8 +75,7 @@ public class HomeActivity extends Activity {
 			}
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_BACK
-				&& (HelloWebViewClient.CURRENT_URL.contains("m.baidu.com") || HelloWebViewClient.CURRENT_URL
-						.equals(""))) {
+				&& HelloWebViewClient.CURRENT_URL.contains("index.html")) {
 			if ((System.currentTimeMillis() - mExitTime) > 2000) {
 				Toast.makeText(this,
 						getResources().getString(R.string.press_again_exit),
@@ -93,7 +92,7 @@ public class HomeActivity extends Activity {
 	}
 
 	public void requestedOrientation(String url) {
-		if (url.contains("/news")) {
+		if (url.contains("/deal")) {
 			this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		} else {
 			this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

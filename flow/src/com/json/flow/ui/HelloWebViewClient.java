@@ -2,6 +2,8 @@ package com.json.flow.ui;
 
 import java.util.ArrayList;
 
+import com.json.flow.util.UrlContant;
+
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -10,7 +12,7 @@ public class HelloWebViewClient extends WebViewClient {
 
 	static ArrayList<String> histories = new ArrayList<String>();
 
-	public static String CURRENT_URL = "";
+	public static String CURRENT_URL = UrlContant.URL_INDEX;
 
 	private HomeActivity activity;
 
