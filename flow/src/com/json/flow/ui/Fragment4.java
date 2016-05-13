@@ -1,13 +1,14 @@
 package com.json.flow.ui;
 
-import com.json.flow.R;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+
+import com.json.flow.R;
+import com.json.flow.view.components.CustomWebViewClient;
 
 public class Fragment4 extends Fragment {
 	private WebView webview;
@@ -20,7 +21,7 @@ public class Fragment4 extends Fragment {
 		webview.getSettings().setJavaScriptEnabled(true);
 		// 加载需要显示的网页
 		webview.loadUrl("http://m.mi.com");
-		webview.setWebViewClient(new HelloWebViewClient());
+		webview.setWebViewClient(new CustomWebViewClient());
 		return view;
 	}
 }

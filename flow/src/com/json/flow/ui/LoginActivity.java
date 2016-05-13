@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.igexin.sdk.PushManager;
 import com.json.flow.R;
+import com.json.flow.util.Constants;
+import com.json.flow.util.SPUtils;
 import com.json.flow.util.UrlContant;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -35,13 +37,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		sp = SPUtils.getInstance(this, Constants.SPNAME, Context.MODE_PRIVATE);
+		if(!"NONE".equals(SPUtils.getSharedPreferences(sp, Constants.SP_USER_NAME, "NONE"))){
+			Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+			LoginActivity.this.startActivity(intent);
+			finish();
+		}
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		et_name = (EditText) findViewById(R.id.username);
 		et_pass = (EditText) findViewById(R.id.password);
 		mLoginButton = (Button) findViewById(R.id.login);
 		mLoginButton.setOnClickListener(this);
-		sp = getSharedPreferences("SP", MODE_PRIVATE);
 		PushManager.getInstance().initialize(this.getApplicationContext());
 	}
 
@@ -59,7 +66,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}
 
 	private boolean login(final String userName, final String password) {
-
 		new Thread() {
 			public void run() {
 				post(userName, password);
@@ -94,13 +100,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 										Toast.LENGTH_SHORT).show();
 								// 登录成功和记住密码框为选中状态才保存用户信息
 								// 记住用户名、密码、
-								Editor editor = sp.edit();
-								editor.putString(UrlContant.SP_USER_NAME,
-										userNameValue);
 								jsonObject = new JSONObject(jsonObject.getString("result"));
-								editor.putString(UrlContant.SP_token,
-										jsonObject.getString("token"));
-								editor.commit();
+								SPUtils.setSharedPreferences(sp, Constants.SP_USER_NAME+"&&"+userNameValue);
+								SPUtils.setSharedPreferences(sp, Constants.SP_token+"&&"+jsonObject.getString("token"));
 								// 跳转界面
 								Intent intent = new Intent(LoginActivity.this,
 										HomeActivity.class);

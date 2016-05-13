@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import com.json.flow.R;
+import com.json.flow.view.components.CustomWebViewClient;
 
 public class Fragment1 extends Fragment {
 	private WebView webview;
@@ -20,7 +21,7 @@ public class Fragment1 extends Fragment {
 		webview.getSettings().setJavaScriptEnabled(true);
 		// 加载需要显示的网页
 		webview.loadUrl("http://m.baidu.com/");
-		webview.setWebViewClient(new HelloWebViewClient());
+		webview.setWebViewClient(new CustomWebViewClient());
 		return view;
 	}
 }

@@ -2,6 +2,7 @@ package com.json.flow.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -12,9 +13,12 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.json.flow.R;
-import com.json.flow.util.CustomWebView;
+import com.json.flow.util.Constants;
 import com.json.flow.util.JavaScriptinterface;
+import com.json.flow.util.SPUtils;
 import com.json.flow.util.UrlContant;
+import com.json.flow.view.components.CustomWebView;
+import com.json.flow.view.components.CustomWebViewClient;
 
 @SuppressLint({ "JavascriptInterface", "SetJavaScriptEnabled" })
 public class HomeActivity extends Activity {
@@ -26,17 +30,18 @@ public class HomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		sp = getSharedPreferences("SP", MODE_PRIVATE);
-		if ("NONE".equals(sp.getString(UrlContant.SP_USER_NAME, "NONE"))) {
+	    sp = SPUtils.getInstance(this, Constants.SPNAME, Context.MODE_PRIVATE);
+	    String userName = sp.getString(Constants.SP_USER_NAME, "NONE");
+		if ("NONE".equals(userName)) {
 			Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
 			HomeActivity.this.startActivity(intent);
 			finish();
 		}
 		setContentView(R.layout.activity_home);
 		String url = UrlContant.URL_INDEX
-				+ UrlContant.getUri(sp.getString(UrlContant.SP_token, "NONE"));
+				+ UrlContant.getUri(sp.getString(Constants.SP_token, "NONE"));
 		// url = "https://m.baidu.com/";
-		HelloWebViewClient.addUrl(url);
+		CustomWebViewClient.addUrl(url);
 		initView(url);
 	}
 
@@ -58,24 +63,28 @@ public class HomeActivity extends Activity {
 		// 设置WebView属性，能够执行Javascript脚本
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.addJavascriptInterface(new JavaScriptinterface(
-				HomeActivity.this), "android");
+				HomeActivity.this), "FlowAndroid");
 		// 加载需要显示的网页
 		webview.loadUrl(url);
-		webview.setWebViewClient(new HelloWebViewClient(HomeActivity.this));
+		webview.setWebViewClient(new CustomWebViewClient(HomeActivity.this));
+		// CustomWebChromeClient webChromeClient = new
+		// CustomWebChromeClient(HomeActivity.this);
+		// webview.setWebChromeClient(webChromeClient);
 	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)
-				&& !HelloWebViewClient.CURRENT_URL.contains("index.html")) {
-			if (HelloWebViewClient.getPreUrl() != null) {
-				HelloWebViewClient.CURRENT_URL = HelloWebViewClient.getPreUrl();
-				requestedOrientation(HelloWebViewClient.getPreUrl());
-				initView(HelloWebViewClient.getPreUrl());
+				&& !CustomWebViewClient.CURRENT_URL.contains("index.html")) {
+			if (CustomWebViewClient.getPreUrl() != null) {
+				CustomWebViewClient.CURRENT_URL = CustomWebViewClient
+						.getPreUrl();
+				requestedOrientation(CustomWebViewClient.getPreUrl());
+				initView(CustomWebViewClient.getPreUrl());
 			}
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_BACK
-				&& HelloWebViewClient.CURRENT_URL.contains("index.html")) {
+				&& CustomWebViewClient.CURRENT_URL.contains("index.html")) {
 			if ((System.currentTimeMillis() - mExitTime) > 2000) {
 				Toast.makeText(this,
 						getResources().getString(R.string.press_again_exit),

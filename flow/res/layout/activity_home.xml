@@ -3,7 +3,7 @@
     android:layout_height="match_parent"  
     android:orientation="vertical" > 
     
-    <com.json.flow.util.CustomWebView   
+    <com.json.flow.view.components.CustomWebView
         android:id="@+id/webview" 
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent" 
