@@ -2,9 +2,33 @@
 # -*- coding: utf-8 -*-   
 import wx
 from hua import hua;
+from dribbble import Dribbble;
+import threading
+
+class timer(threading.Thread):
+    def __init__(self, num, interval,path,url,page):  
+        threading.Thread.__init__(self)  
+        self.thread_num = num  
+        self.interval = interval  
+        self.thread_stop = False
+        self.path = path;
+        self.url = url;
+        self.page = page;
+    def run(self): #Overwrite run() method, put what you want the thread do here  
+        while(True):
+             if self.url.find("dribbble")==-1:
+                huanew = hua()
+                huanew.start(self.path,self.url);
+             else:
+                dribbble = Dribbble();
+                dribbble.start(self.path, self.page);
+    def stop(self):  
+        self.thread_stop = True
 
 # path = r"f:/24034931/"
 # url = 'http://huaban.com/boards/24034931'
+# url = 'https://dribbble.com/'
+
 
 class Firstframe(wx.Frame):
     def __init__(self):  
@@ -17,9 +41,12 @@ class Firstframe(wx.Frame):
         self.posCtrl1 = wx.TextCtrl(parent=panel1, value = "f:/24034931/", pos=(100, 10),size=(200, 25))
         
         wx.StaticText(parent=panel1, label= " url :", pos=(10, 50),size=(50, 25))  
-        self.posCtrl2 = wx.TextCtrl(parent=panel1, value = "http://huaban.com/boards/24034931", pos=(100, 50),size=(200, 25))
+        self.posCtrl2 = wx.TextCtrl(parent=panel1, value = "https://dribbble.com/", pos=(100, 50),size=(200, 25))
         
-        self.btn=wx.Button(parent=panel1,label= " start ",pos=(100, 100),size=(150, 25))  
+        wx.StaticText(parent=panel1, label= " page :", pos=(10, 100),size=(50, 25))  
+        self.pagetext = wx.TextCtrl(parent=panel1, value = "1", pos=(100, 100),size=(200, 25))
+        
+        self.btn=wx.Button(parent=panel1,label= " start ",pos=(100, 150),size=(150, 25))  
         self.btn.Bind(wx.EVT_BUTTON,  self.OnMyButtonClick)      
           
         #添加wxMenuBar菜单,提供了几种创建菜单的方式  
@@ -54,11 +81,12 @@ class Firstframe(wx.Frame):
         self.btn.SetLabel("You Clicked!")
         path = self.posCtrl1.GetValue();
         url = self.posCtrl2.GetValue();
+        page = self.pagetext.GetValue();
         print path
         print url
-        huanew = hua()
-        huanew.start(path,url);
-          
+        
+        thread = timer(1, 1,path,url,page)
+        thread.start();
     def OnQuit(self, event): #点击退出菜单时调用  
         self.Close()  
           

@@ -24,7 +24,7 @@ class hua():
                 with open(path + att_url + '.' + img_type, 'wb') as fd:
                     for chunk in r.iter_content():
                         fd.write(chunk)
-                        
+                    fd.close();    
     
     def start(self,path,url):
         count = 0;
